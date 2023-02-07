@@ -15,3 +15,5 @@ usersRouter.post('/', celebrate({
         password: Joi.string().required()
     }
 }), usersController.create);
+
+export default usersRouter;
