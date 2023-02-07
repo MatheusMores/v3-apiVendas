@@ -3,6 +3,14 @@ import { verify } from "jsonwebtoken";
 
 import AppError from "@shared/errors/AppError";
 import authConfig from "@config/auth"
+import { request } from "http";
+
+interface TokenPayload {
+    iat: number;
+    exp: number;
+    sub: string;
+}
+
 
 export default function isAuthenticated(req: Request, res: Response, next: NextFunction){
     const authHeader = req.headers.authorization;
@@ -14,7 +22,13 @@ export default function isAuthenticated(req: Request, res: Response, next: NextF
     const [, token] = authHeader.split(' ');
 
     try {
-        const decodeToken = verify(token, authConfig.jwt.secret);
+        const decodedToken = verify(token, authConfig.jwt.secret);
+
+        const { sub } = decodedToken as TokenPayload;
+
+        req.user = {
+            id: sub
+        }
 
         return next();
     } catch (error) {
