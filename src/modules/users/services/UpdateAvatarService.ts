@@ -2,7 +2,7 @@ import AppError from "@shared/errors/AppError";
 import path from "path";
 import fs from 'fs';
 import { getCustomRepository } from "typeorm";
-import UsersRepository from "../typeorm/repositories/UserRepository";
+import UsersRepository from "../typeorm/repositories/UsersRepository";
 import uploadConfig from '@config/upload';
 
 interface IRequest {
