@@ -3,6 +3,7 @@ import { getCustomRepository } from "typeorm"
 import UsersRepository from "../typeorm/repositories/UsersRepository"
 import UserTokenRepository from "../typeorm/repositories/UsersTokenRepository";
 import EtherelMail from "@config/mail/EtherealMail";
+import path from "path";
 
 interface IRequest{
     email: string
@@ -19,11 +20,22 @@ class SendForgotPasswordEmailService {
         }
 
         const token = await usersTokenRepository.generate(user.id);
-
+        
+        const forgotPasswordTemplatePath = path.resolve(__dirname, '..', 'views', 'forgot_password.hbs')
+        
         await EtherelMail.sendMail({
-            to: email,
+            to: {
+                name: user.name,
+                email: user.email
+            },
             subject: 'Recuperacao de senha',
-            body: `Solicitação de redefinição de senha recebida: ${token!.token}`
+            templateData: {
+                filePath: forgotPasswordTemplatePath,
+                variables: {
+                    name: user.name,
+                    link: `http://localhost:3333/password/reset?token=${token.token}`
+                }
+            }
         })
     }
 }
