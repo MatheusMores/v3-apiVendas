@@ -27,3 +27,5 @@ class CustomersRepository extends Repository<Customer>{
         return customer;
     }
 }
+
+export default CustomersRepository;
