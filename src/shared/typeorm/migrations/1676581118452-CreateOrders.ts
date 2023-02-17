@@ -14,6 +14,16 @@ export class CreateOrders1676581118452 implements MigrationInterface {
                         generationStrategy: 'uuid',
                         default: 'uuid_generate_v4()'
 
+                    },
+                    {
+                        name: 'created_at',
+                        type: 'timestamp',
+                        default: 'now()'
+                    },
+                    {
+                        name: 'updated_at',
+                        type: 'timestamp',
+                        default: 'now()'
                     }
                 ]
             })
@@ -21,6 +31,7 @@ export class CreateOrders1676581118452 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropTable('orders');
     }
 
 }
