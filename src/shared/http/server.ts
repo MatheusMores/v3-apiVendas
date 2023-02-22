@@ -3,8 +3,9 @@ import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors'
 import cors from 'cors';
 import { errors } from 'celebrate';
-import "@shared/typeorm";
+import { pagination } from 'typeorm-pagination';
 
+import "@shared/typeorm";
 import routes from './routes/index';
 import AppError from '@shared/errors/AppError';
 import uploadConfig from '@config/upload';
@@ -13,12 +14,11 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(pagination);
 app.use('/files', express.static(uploadConfig.directory));
 app.use(routes);
 app.use(errors());
 
-
-// Middleware de erro
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     if (error instanceof AppError) {
         return res.status(error.statusCode).json({
