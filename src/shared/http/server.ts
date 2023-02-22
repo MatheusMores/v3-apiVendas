@@ -4,7 +4,7 @@ import 'express-async-errors'
 import cors from 'cors';
 import { errors } from 'celebrate';
 import { pagination } from 'typeorm-pagination';
-
+import 'dotenv/config'
 import "@shared/typeorm";
 import routes from './routes/index';
 import AppError from '@shared/errors/AppError';
