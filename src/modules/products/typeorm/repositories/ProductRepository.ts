@@ -18,16 +18,15 @@ export class ProductRepository extends Repository<Product>{
         return product;
     }
 
-    public async findAllByIds(products: IFindProducts[]): Promise<Product[]>{
-        const productsIds = products.map(product => product.id);
-
-        const existsProducts = await this.find({
-            where: {
-                id: In(productsIds)
-            }
-        })
-
-        return existsProducts;
-
+    public async findAllByIds(products: IFindProducts[]): Promise<Product[]> {
+        const productIds = products.map(product => product.id);
+    
+        const existentProducts = await this.find({
+          where: {
+            id: In(productIds),
+          },
+        });
+    
+        return existentProducts;
     }
 }

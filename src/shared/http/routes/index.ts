@@ -17,8 +17,5 @@ routes.use('/profile', profileRouter);
 routes.use('/customers', customersRouter);
 routes.use('/orders', ordersRouter);
 
-routes.get('/', (req, res) => {
-    return res.json({ok: true});
-})
 
 export default routes;

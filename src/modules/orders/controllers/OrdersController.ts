@@ -7,7 +7,7 @@ class OrdersController {
         const { id } = req.params;
 
         const showOrder = new ShowOrderService();
-        const order = showOrder.execute({id});
+        const order = await showOrder.execute({id});
 
         return res.json(order);
     }
