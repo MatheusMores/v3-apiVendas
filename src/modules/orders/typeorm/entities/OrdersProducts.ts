@@ -16,6 +16,12 @@ class OrdersProducts {
     product: Product;
 
     @Column()
+    order_id: string;
+
+    @Column()
+    product_id: string;
+
+    @Column()
     price: number;
 
     @Column()

@@ -18,7 +18,7 @@ export class ProductRepository extends Repository<Product>{
         return product;
     }
 
-    public async findAllByIds(products: IFindProducts[]): Promise<Product[] | undefined>{
+    public async findAllByIds(products: IFindProducts[]): Promise<Product[]>{
         const productsIds = products.map(product => product.id);
 
         const existsProducts = await this.find({
