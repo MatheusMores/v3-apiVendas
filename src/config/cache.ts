@@ -1,8 +1,8 @@
-import { RedisOptions } from 'ioredis';
+import { RedisClientOptions } from 'redis';
 
 interface ICacheConfig {
     config: {
-        redis: RedisOptions
+        redis: RedisClientOptions
     },
     driver: string;
 }
