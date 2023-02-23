@@ -17,6 +17,21 @@ class DeleteProductService {
 
         productsRepository.remove(product);
     }
+
+        /* Se o cache estivesse funcionando:
+        const productsRepository = getCustomRepository(ProductRepository);
+
+        const redisCache = new RedisCache();
+
+        const product = await productsRepository.findOne(id);
+        if (!product){
+            throw new AppError('Product not found')
+        }
+        
+        await redisCache.invalidate('api-vendas-PRODUCT_LIST')
+
+        productsRepository.remove(product);
+        */
 }
 
 export default DeleteProductService;

@@ -1451,6 +1451,11 @@
   "resolved" "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz"
   "version" "2.0.1"
 
+"promise-queue@^2.2.5":
+  "integrity" "sha512-p/iXrPSVfnqPft24ZdNNLECw/UrtLTpT3jpAAMzl/o5/rDsGCPo3/CQS2611flL6LkoEJ3oQZw7C8Q80ZISXRQ=="
+  "resolved" "https://registry.npmjs.org/promise-queue/-/promise-queue-2.2.5.tgz"
+  "version" "2.2.5"
+
 "proxy-addr@~2.0.7":
   "integrity" "sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg=="
   "resolved" "https://registry.npmjs.org/proxy-addr/-/proxy-addr-2.0.7.tgz"
@@ -1519,6 +1524,13 @@
   "version" "3.0.0"
   dependencies:
     "redis-errors" "^1.0.0"
+
+"redis-server@^1.2.2":
+  "integrity" "sha512-pOaSIeSMVFkEFIuaMtpQ3TOr3uI4sUmEHm4ofGks5vTPRseHUszxyIlC70IFjUR9qSeH8o/ARZEM8dqcJmgGJw=="
+  "resolved" "https://registry.npmjs.org/redis-server/-/redis-server-1.2.2.tgz"
+  "version" "1.2.2"
+  dependencies:
+    "promise-queue" "^2.2.5"
 
 "redis@*", "redis@^4.6.4":
   "integrity" "sha512-wi2tgDdQ+Q8q+PR5FLRx4QvDiWaA+PoJbrzsyFqlClN5R4LplHqN3scs/aGjE//mbz++W19SgxiEnQ27jnCRaA=="

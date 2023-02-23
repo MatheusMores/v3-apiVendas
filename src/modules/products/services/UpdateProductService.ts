@@ -31,6 +31,33 @@ class UpdateProductService {
 
         return product;
     }
+
+    /* Se o cache estivesse funcinando:
+        const productsRepository = getCustomRepository(ProductRepository);
+    
+        const redisCache = new RedisCache();
+
+        const product = await productsRepository.findOne(id);
+        if (!product) {
+            throw new AppError("Product not found")
+        }
+
+        const productExists = await productsRepository.findByName(name);
+        if (productExists && name !== product.name){
+            throw new AppError('There is already a product with this name')
+        }
+
+        product.name = name;
+        product.price = price;
+        product.quantity = quantity;
+
+        await redisCache.invalidate('api-vendas-PRODUCT_LIST')
+
+        await productsRepository.save(product);
+
+        return product;
+        */
+
 }
 
 export { UpdateProductService }
